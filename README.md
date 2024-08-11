@@ -1,8 +1,9 @@
 User API
+/////////////////////////////////////////////////////////////////////////////////
 Overview
 The User API is a Spring Boot application for managing user information. It supports user sign-up, retrieval, updating, and deletion operations. The application integrates with a MySQL database and uses Apache POI to handle user data in an Excel file.
-
-Features
+///////////////////////////////////////////////////////////////////////////////
+Features:---------------------------------------------------------------------
 User Sign-Up: Register new users with email and phone number validation.
 User Retrieval: Fetch user details based on roles (admin or user), or get all user details.
 User Update: Update existing user details.
@@ -98,7 +99,7 @@ Request Body: JSON object with updated user details.
 DELETE /api/users/{id}
 
 Deletes the user with the specified ID.
-Build Configuration
+Build Configuration:-----------------------------------------------------------------------
 The pom.xml file contains the Maven configuration for the project.
 
 xml
@@ -166,7 +167,8 @@ Copy code
         </plugins>
     </build>
 </project>
-Notes
+//////////////////////////////////////////////////////////////////////////////////
+Notes:----------------------------------------------------------------------------
 Validation: The User entity uses Jakarta Bean Validation annotations for input validation.
 Excel File Handling: The ExcelFileHandler class manages reading from and writing to an Excel file, ensuring data consistency between the database and the file.
 Logging: The application is configured to use DEBUG level logging for Spring framework classes to help with debugging.
