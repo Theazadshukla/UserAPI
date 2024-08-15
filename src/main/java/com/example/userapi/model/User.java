@@ -1,69 +1,44 @@
 package com.example.userapi.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+//import org.springframework.data.relational.core.mapping.Embedded;
 
-@Setter
-@Getter
+@Data
 @Entity
-@Table(name = "users")
+@Schema(description = "Details about the User")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Unique identifier of the User", example = "1")
     private Long id;
 
-    @NotEmpty(message = "Name is required")
-    @Size(max = 50, message = "Name should not exceed 50 characters")
+    @NotBlank(message = "Name is mandatory")
+    @Schema(description = "Name of the User", example = "Azad Shukla")
     private String name;
 
-    @NotEmpty(message = "Email is required")
-    @Email(message = "Invalid email format")
-    @Column(unique = true)
+    @Email(message = "Email should be valid")
+    @NotBlank(message = "Email is mandatory")
+    @Schema(description = "Email address of the User", example = "Azad@gmail.com")
     private String email;
 
-    @NotEmpty(message = "Phone number is required")
-    @Pattern(regexp = "^\\d{10}$", message = "Invalid phone number")
-    @Column(unique = true)
+    @Pattern(regexp = "^[+][0-9]{1,3}[0-9]{10}$", message = "Phone number should include country code and be valid 10 digigt")
+    @NotBlank(message = "Phone/Mobile is mandatory")
+    @Schema(description = "Phone number of the User, including country code", example = "+11234567890")
     private String phone;
 
-    @NotEmpty(message = "Role is required")
+    @NotBlank(message = "Role is mandatory")
     @Pattern(regexp = "^(admin|user)$", message = "Role must be either 'admin' or 'user'")
+    @Schema(description = "Role of the User", example = "user/admin")
     private String role;
 
-    @NotEmpty(message = "House number is required")
-    @Size(max = 10, message = "House number should not exceed 10 characters")
-    private String houseNumber;
-
-    @NotEmpty(message = "City is required")
-    @Size(max = 50, message = "City name should not exceed 50 characters")
-    private String city;
-
-    @NotEmpty(message = "District is required")
-    @Size(max = 50, message = "District name should not exceed 50 characters")
-    private String district;
-
-    @NotEmpty(message = "Pincode is required")
-    @Pattern(regexp = "^\\d{5,6}$", message = "Invalid pincode")
-    private String pincode;
-
-    @NotEmpty(message = "Country is required")
-    @Size(max = 50, message = "Country name should not exceed 50 characters")
-    private String country;
-
-    @NotEmpty(message = "Country code is required")
-    @Pattern(regexp = "^[A-Z]{2,3}$", message = "Invalid country code")
-    private String countryCode;
-
-    // Constructors
-    public User() {}
-
-    // Getters and Setters
+    @Embedded
+    @Schema(description = "Address of the User")
+    private Address address;
 
 }
-

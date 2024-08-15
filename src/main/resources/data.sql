@@ -1,6 +1,6 @@
 show databases;
 use userapi;
-select *from  users;
+select *from  user;
 
 
 
