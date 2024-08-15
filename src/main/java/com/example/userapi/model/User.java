@@ -1,15 +1,12 @@
 package com.example.userapi.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+//import org.springframework.data.relational.core.mapping.Embedded;
 
 @Data
 @Entity
@@ -43,4 +40,5 @@ public class User {
     @Embedded
     @Schema(description = "Address of the User")
     private Address address;
+
 }

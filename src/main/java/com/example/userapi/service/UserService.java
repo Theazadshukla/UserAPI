@@ -4,6 +4,7 @@ import com.example.userapi.model.User;
 import com.example.userapi.repository.UserRepository;
 import com.example.userapi.util.ExcelFileHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ public class UserService {
         updateExcelFile();
         return savedUser;
     }
+
 
     public List<User> getAdminRoleDetails() {
         return userRepository.findByRole("admin");
@@ -61,4 +63,4 @@ public class UserService {
         List<User> allUsers = userRepository.findAll();
         excelFileHandler.writeToExcel(allUsers);
     }
-}
+    }

@@ -24,7 +24,7 @@ public class Address {
     private String state;
 
     @NotBlank(message = "Country is mandatory")
-    @Pattern(regexp = "^[A-Za-z ]+$", message = "Country should contain only letters")
+    @Pattern(regexp = "^[A-Z]{2,3}$", message = "Country code should be valid")
     @Schema(description = "Country of the User", example = "IND")
     private String country;
 }
