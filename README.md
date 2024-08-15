@@ -32,25 +32,35 @@ This project is a Spring Boot-based RESTful API for managing user data, includin
 - **Maven** (Dependency management)
 
 ## Project Structure
-
+  ```bash
+```plaintext
+User API
 ├── src
-│ ├── main
-│ │ ├── java
-│ │ │ └── com.example.userapi
-│ │ │ ├── controller # Controllers for API endpoints
-│ │ │ ├── model # Entity and DTO classes
-│ │ │ ├── repository # JPA repositories
-│ │ │ ├── service # Service layer with business logic
-│ │ │ └── util # Utility classes for Excel handling
-│ │ ├── resources
-│ │ │ ├── application.properties # Configuration properties
-│ │ │ └── userdata.xlsx # Excel file to store user data
-│ └── test
-│ └── java
-│ └── com.example.userapi # Test cases
-├── pom.xml # Maven configuration file
-└── README.md # Project documentation
-
+│   ├── main
+│   │   ├── java
+│   │   │   └── com.example.userapi
+│   │   │       ├── controller
+│   │   │       │   └── UserController.java        # Handles API endpoints for user management
+│   │   │       ├── model
+│   │   │       │   ├── User.java                  # User entity with validation and schema documentation
+│   │   │       │   └── Address.java               # Embedded Address entity within User
+│   │   │       ├── repository
+│   │   │       │   └── UserRepository.java        # JPA repository interface for User
+│   │   │       ├── service
+│   │   │       │   └── UserService.java           # Service layer with business logic for user operations
+│   │   │       └── util
+│   │   │           └── ExcelFileHandler.java      # Utility class for handling Excel file operations
+│   │   ├── resources
+│   │   │   ├── application.properties             # Application configuration properties
+│   │   │   └── userdata.xlsx                      # Excel file to store user data
+│   └── test
+│       └── java
+│           └── com.example.userapi
+│               └── UserApiApplicationTests.java   # Unit tests for the application
+├── .gitignore                                      # Git ignore file
+├── pom.xml                                         # Maven configuration file
+└── README.md                                       # Project documentation
+ ```
 ## Features
 
 - **User Signup:** Allows users to sign up with their details.
@@ -69,17 +79,21 @@ This project is a Spring Boot-based RESTful API for managing user data, includin
    
 2. Update the MySQL database credentials:
 Update src/main/resources/application.properties with your MySQL database username and password:
+ ```bash
 spring.datasource.username=your_username
 spring.datasource.password=your_password
-
-3. Build the project using Maven:
+ ```
+4. Build the project using Maven:
+ ```bash   
 mvn clean install
-
+ ```
 ▶️USAGE
 
 ➡️Running the Application
 You can run the application using the following command:
+```bash 
 mvn spring-boot:run
+```
 The application will start on http://localhost:8080.
 
 ➡️API Endpoints:-
@@ -96,13 +110,19 @@ Every time a user is added, updated, or deleted, the Excel file is updated accor
 
 ➡️Swagger API Documentation:-
 This project uses Swagger for API documentation. Once the application is running, you can access the Swagger UI at:
+```bash 
 http://localhost:8080/swagger-ui
+```
 Here, you can interact with the API endpoints and view their details.
 
 ➡️Testing:-
 The project includes unit tests for the service layer. To run the tests:
+```bash 
 mvn test
+```
 
 ➡️License:-
 This project is licensed under the MIT License. See the LICENSE file for details.
+```bash 
 Replace `yourusername` with your actual GitHub username in the clone URL, and feel free to adjust the content based on any specific details or requirements for your project.
+```
