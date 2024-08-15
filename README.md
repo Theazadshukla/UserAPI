@@ -1,181 +1,221 @@
-User API
-/////////////////////////////////////////////////////////////////////////////////
+# User API
 
-Overview
-The User API is a Spring Boot application for managing user information. It supports user sign-up, retrieval, updating, and deletion operations. The application integrates with a MySQL database and uses Apache POI to handle user data in an Excel file.
+## Overview
 
-Features:---------------------------------------------------------------------
+This project is a Spring Boot-based RESTful API for managing user data, including signup, retrieval, update, and deletion of user details. The application also integrates with an Excel file to store and retrieve user data.
 
-User Sign-Up: Register new users with email and phone number validation.
-User Retrieval: Fetch user details based on roles (admin or user), or get all user details.
-User Update: Update existing user details.
-User Deletion: Remove users from the database.
-Excel File Integration: Store and update user information in an Excel file.
-Technologies
-Spring Boot: Framework for building the application.
-Spring Data JPA: Simplifies database interactions using JPA.
-MySQL: Relational database for storing user data.
-Apache POI: Library for reading and writing Excel files.
-Lombok: Reduces boilerplate code for Java objects.
-Getting Started
-Prerequisites
-Java 22 or above
-MySQL Database Server
-Maven
-Setup
-Clone the Repository
+## Table of Contents
 
-bash
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Running the Application](#running-the-application)
+  - [API Endpoints](#api-endpoints)
+- [Excel File Handling](#excel-file-handling)
+- [Swagger API Documentation](#swagger-api-documentation)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Technologies Used
+
+- **Java** (JDK 17)
+- **Spring Boot** 3.x.x
+- **Spring Data JPA**
+- **MySQL** (Database)
+- **Apache POI** (Excel file handling)
+- **Swagger/OpenAPI** (API Documentation)
+- **Lombok** (Boilerplate code reduction)
+- **JUnit 5** (Testing)
+- **Maven** (Dependency management)
+
+## Project Structure
+├── src
+│ ├── main
+│ │ ├── java
+│ │ │ └── com.example.userapi
+│ │ │ ├── controller # Controllers for API endpoints
+│ │ │ ├── model # Entity and DTO classes
+│ │ │ ├── repository # JPA repositories
+│ │ │ ├── service # Service layer with business logic
+│ │ │ └── util # Utility classes for Excel handling
+│ │ ├── resources
+│ │ │ ├── application.properties # Configuration properties
+│ │ │ └── userdata.xlsx # Excel file to store user data
+│ └── test
+│ └── java
+│ └── com.example.userapi # Test cases
+├── pom.xml # Maven configuration file
+└── README.md # Project documentation
+
+
+## Features
+
+- **User Signup:** Allows users to sign up with their details.
+- **Retrieve User Details:** Get user details by role or fetch all users.
+- **Update User:** Modify user information by ID.
+- **Delete User:** Remove user details by ID.
+- **Excel Integration:** Store and manage user details in an Excel file.
+- **Swagger Integration:** API documentation and testing through Swagger UI.
+
+## Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/user-api.git
+   cd user-api
+2. Update the MySQL database credentials:
+Update src/main/resources/application.properties with your MySQL database username and password:
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+3.Build the project using Maven:
+mvn clean install
+
+USAGE
+Running the Application
+You can run the application using the following command:
+mvn spring-boot:run
+The application will start on http://localhost:8080.
+
+API Endpoints:-
+POST /api/users/signup: Create a new user.
+GET /api/users/admin: Retrieve details of users with the "admin" role.
+GET /api/users/user: Retrieve details of users with the "user" role.
+GET /api/users/data: Retrieve details of all users.
+PUT /api/users/{id}: Update user details by ID.
+DELETE /api/users/{id}: Delete user details by ID.
+Excel File Handling
+User data is stored in an Excel file (userdata.xlsx) located in src/main/resources/. The ExcelFileHandler class handles the reading and writing operations for this file.
+
+Every time a user is added, updated, or deleted, the Excel file is updated accordingly.
+
+Swagger API Documentation
+This project uses Swagger for API documentation. Once the application is running, you can access the Swagger UI at:
+http://localhost:8080/swagger-ui
+
+Here's a sample README.md file for your Spring Boot project:
+
+markdown
 Copy code
-git clone https://github.com/yourusername/userapi.git
-cd userapi
-Configure the Database
+# User API
 
-Ensure you have a MySQL database running and create a database named userapi. Update the src/main/resources/application.properties file with your MySQL database configuration.
+## Overview
+
+This project is a Spring Boot-based RESTful API for managing user data, including signup, retrieval, update, and deletion of user details. The application also integrates with an Excel file to store and retrieve user data.
+
+## Table of Contents
+
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Running the Application](#running-the-application)
+  - [API Endpoints](#api-endpoints)
+- [Excel File Handling](#excel-file-handling)
+- [Swagger API Documentation](#swagger-api-documentation)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Technologies Used
+
+- **Java** (JDK 17)
+- **Spring Boot** 3.x.x
+- **Spring Data JPA**
+- **MySQL** (Database)
+- **Apache POI** (Excel file handling)
+- **Swagger/OpenAPI** (API Documentation)
+- **Lombok** (Boilerplate code reduction)
+- **JUnit 5** (Testing)
+- **Maven** (Dependency management)
+
+## Project Structure
+
+├── src
+│ ├── main
+│ │ ├── java
+│ │ │ └── com.example.userapi
+│ │ │ ├── controller # Controllers for API endpoints
+│ │ │ ├── model # Entity and DTO classes
+│ │ │ ├── repository # JPA repositories
+│ │ │ ├── service # Service layer with business logic
+│ │ │ └── util # Utility classes for Excel handling
+│ │ ├── resources
+│ │ │ ├── application.properties # Configuration properties
+│ │ │ └── userdata.xlsx # Excel file to store user data
+│ └── test
+│ └── java
+│ └── com.example.userapi # Test cases
+├── pom.xml # Maven configuration file
+└── README.md # Project documentation
+
+markdown
+Copy code
+
+## Features
+
+- **User Signup:** Allows users to sign up with their details.
+- **Retrieve User Details:** Get user details by role or fetch all users.
+- **Update User:** Modify user information by ID.
+- **Delete User:** Remove user details by ID.
+- **Excel Integration:** Store and manage user details in an Excel file.
+- **Swagger Integration:** API documentation and testing through Swagger UI.
+
+## Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/user-api.git
+   cd user-api
+Update the MySQL database credentials:
+Update src/main/resources/application.properties with your MySQL database username and password:
 
 properties
 Copy code
-spring.datasource.url=jdbc:mysql://localhost:3306/userapi
-spring.datasource.username=root
-spring.datasource.password=Admin
-Build and Run the Application
-
-Use Maven to build and run the application:
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+Build the project using Maven:
 
 bash
 Copy code
 mvn clean install
-mvn spring-boot:run
-Application Properties
-The application.properties file is located at src/main/resources/application.properties and contains configuration settings for the application.
+Usage
+Running the Application
+You can run the application using the following command:
 
-properties
+bash
 Copy code
-spring.application.name=User Api
-# Database configuration
-spring.datasource.url=jdbc:mysql://localhost:3306/userapi
-spring.datasource.username=root
-spring.datasource.password=Admin
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-file.storage.path=src/main/resources/userdata.xlsx
-spring.jpa.properties.hibernate.format_sql=true
-
-# JPA configuration
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-
-# Logging
-logging.level.org.springframework=DEBUG
-Project Structure
-src/main/java/com/example/userapi
-
-model/User.java: Defines the User entity with validation constraints.
-repository/UserRepository.java: JPA repository interface for user data operations.
-service/UserService.java: Business logic for managing users and interacting with the database and Excel file.
-controller/UserController.java: RESTful API endpoints for user operations.
-util/ExcelFileHandler.java: Utility class for handling Excel file operations.
-UserApiApplication.java: Main class to run the Spring Boot application.
-src/main/resources
-
-application.properties: Configuration file for the application.
-pom.xml: Maven POM file specifying project dependencies and build configurations.
+mvn spring-boot:run
+The application will start on http://localhost:8080.
 
 API Endpoints
-POST /api/users/signup
+POST /api/users/signup: Create a new user.
+GET /api/users/admin: Retrieve details of users with the "admin" role.
+GET /api/users/user: Retrieve details of users with the "user" role.
+GET /api/users/data: Retrieve details of all users.
+PUT /api/users/{id}: Update user details by ID.
+DELETE /api/users/{id}: Delete user details by ID.
+Excel File Handling
+User data is stored in an Excel file (userdata.xlsx) located in src/main/resources/. The ExcelFileHandler class handles the reading and writing operations for this file.
 
-Registers a new user.
-Request Body: JSON object with user details.
-GET /api/users/admin
+Every time a user is added, updated, or deleted, the Excel file is updated accordingly.
 
-Retrieves all users with the role admin.
-GET /api/users/user
+Swagger API Documentation
+This project uses Swagger for API documentation. Once the application is running, you can access the Swagger UI at:
 
-Retrieves all users with the role user.
-GET /api/users/data
-
-Retrieves all users.
-PUT /api/users/{id}
-
-Updates the user with the specified ID.
-Request Body: JSON object with updated user details.
-DELETE /api/users/{id}
-
-Deletes the user with the specified ID.
-
-Build Configuration:-----------------------------------------------------------------------
-
-The pom.xml file contains the Maven configuration for the project.
-
-xml
+bash
 Copy code
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.2</version>
-    </parent>
-    <groupId>com.example</groupId>
-    <artifactId>userapi</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>User Api</name>
-    <description>User Management API with Spring Boot and MySQL</description>
-    <properties>
-        <java.version>22</java.version>
-    </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>annotationProcessor</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>5.2.5</version>
-        </dependency>
-    </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-</project>
+http://localhost:8080/swagger-ui
+Here, you can interact with the API endpoints and view their details.
 
-//////////////////////////////////////////////////////////////////////////////////
+Testing
+The project includes unit tests for the service layer. To run the tests:
+mvn test
 
-Notes:----------------------------------------------------------------------------
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-Validation: The User entity uses Jakarta Bean Validation annotations for input validation.
-Excel File Handling: The ExcelFileHandler class manages reading from and writing to an Excel file, ensuring data consistency between the database and the file.
-Logging: The application is configured to use DEBUG level logging for Spring framework classes to help with debugging.
+Replace `yourusername` with your actual GitHub username in the clone URL, and feel free to adjust the content based on any specific details or requirements for your project.
