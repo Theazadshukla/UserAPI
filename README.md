@@ -92,16 +92,16 @@ User API
    mvn clean install
    ```
    
-▶️USAGE
+## ▶️USAGE
 
-➡️Running the Application
+## ➡️Running the Application
 You can run the application using the following command:
 ```bash 
 mvn spring-boot:run
 ```
 The application will start at `http://localhost:8080`.
 
-➡️API Endpoints
+## ➡️API Endpoints
 
 | HTTP Method | Endpoint               | Description                      |
 |-------------|------------------------|----------------------------------|
@@ -112,31 +112,31 @@ The application will start at `http://localhost:8080`.
 | `PUT`       | `/api/users/{id}`      | Update user by ID                |
 | `DELETE`    | `/api/users/{id}`      | Delete user by ID                |
 
-➡️Thymeleaf Endpoints
+## ➡️Thymeleaf Endpoints
 
 - **User Signup Form**: `http://localhost:8080/signup`
 - **Signup Success**: `http://localhost:8080/success`
 - **Edit User**: `http://localhost:8080/users/edit?id={userId}`
 - **Update Success**: `http://localhost:8080/update-success`
 
-➡️Excel File Handling
+## ➡️Excel File Handling
 
 User data is stored in `userdata.xlsx` located in the `src/main/resources/` directory. The ExcelFileHandler class handles reading and writing operations for this file, ensuring it updates with each user addition, update, or deletion.
 
-➡️Swagger API Documentation:-
+## ➡️Swagger API Documentation:-
 This project uses Swagger for API documentation. Once the application is running, you can access the Swagger UI at:
 ```bash 
 http://localhost:8080/swagger-ui
 ```
 Here, you can interact with the API endpoints and view their details.
 
-➡️Testing:-
+## ➡️Testing:-
 The project includes unit tests for the service layer. To run the tests:
 ```bash 
 mvn test
 ```
 
-➡️License:-
+## ➡️License:-
 This project is licensed under the MIT License. See the LICENSE file for details.
 ```bash 
 Replace `yourusername` with your actual GitHub username in the clone URL, and feel free to adjust the content based on any specific details or requirements for your project.
