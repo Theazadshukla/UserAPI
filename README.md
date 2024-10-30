@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # User Management API
 
 ## Overview
@@ -10,7 +9,6 @@ This project is a Spring Boot-based RESTful API for managing user data, includin
 ## Overview
 
 This project is a Spring Boot-based RESTful API for managing user data, including signup, retrieval, update, and deletion of user details. The application also integrates with an Excel file to store and retrieve user data.
->>>>>>> db2d92e0bcdea55be9754de398e12e9f031d3a48
 
 ## Table of Contents
 
@@ -19,28 +17,22 @@ This project is a Spring Boot-based RESTful API for managing user data, includin
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Running the Application](#running-the-application)
-  - [API Endpoints](#api-endpoints)
+- [Running the Application](#running-the-application)
+- [API Endpoints](#api-endpoints)
 - [Excel File Handling](#excel-file-handling)
 - [Swagger API Documentation](#swagger-api-documentation)
 - [Testing](#testing)
-<<<<<<< HEAD
-=======
 - [Contributing](#contributing)
->>>>>>> db2d92e0bcdea55be9754de398e12e9f031d3a48
 - [License](#license)
 
 ## Technologies Used
 
 - **Java** (JDK 17)
-<<<<<<< HEAD
 - **Spring Boot** 3.3.5
 - **Spring Data JPA**
 - **Spring Web and Thymeleaf** (Web and UI)
-=======
 - **Spring Boot** 3.x.x
 - **Spring Data JPA**
->>>>>>> db2d92e0bcdea55be9754de398e12e9f031d3a48
 - **MySQL** (Database)
 - **Apache POI** (Excel file handling)
 - **Swagger/OpenAPI** (API Documentation)
@@ -49,18 +41,12 @@ This project is a Spring Boot-based RESTful API for managing user data, includin
 - **Maven** (Dependency management)
 
 ## Project Structure
-<<<<<<< HEAD
-
-=======
-  ```bash
->>>>>>> db2d92e0bcdea55be9754de398e12e9f031d3a48
 ```plaintext
 User API
 ├── src
 │   ├── main
 │   │   ├── java
 │   │   │   └── com.example.userapi
-<<<<<<< HEAD
 │   │   │       ├── controller          # API and web controllers
 │   │   │       ├── model               # User and Address entities
 │   │   │       ├── repository          # UserRepository for database interactions
@@ -155,7 +141,7 @@ mvn test
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-=======
+```plaintext
 │   │   │       ├── controller
 │   │   │       │   └── UserController.java        # Handles API endpoints for user management
 │   │   │       ├── model
@@ -243,4 +229,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ```bash 
 Replace `yourusername` with your actual GitHub username in the clone URL, and feel free to adjust the content based on any specific details or requirements for your project.
 ```
->>>>>>> db2d92e0bcdea55be9754de398e12e9f031d3a48
