@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
-//import org.springframework.data.relational.core.mapping.Embedded;
 
 @Data
 @Entity
@@ -27,7 +26,7 @@ public class User {
     @Schema(description = "Email address of the User", example = "Azad@gmail.com")
     private String email;
 
-    @Pattern(regexp = "^[+][0-9]{1,3}[0-9]{10}$", message = "Phone number should include country code and be valid 10 digigt")
+    @Pattern(regexp = "^[+][0-9]{1,3}[0-9]{10}$", message = "Phone number should include country code and be valid")
     @NotBlank(message = "Phone/Mobile is mandatory")
     @Schema(description = "Phone number of the User, including country code", example = "+11234567890")
     private String phone;
@@ -40,5 +39,4 @@ public class User {
     @Embedded
     @Schema(description = "Address of the User")
     private Address address;
-
 }

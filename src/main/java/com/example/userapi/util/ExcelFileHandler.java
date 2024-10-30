@@ -3,6 +3,7 @@ package com.example.userapi.util;
 import com.example.userapi.model.User;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+//import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.FileInputStream;
@@ -19,7 +20,6 @@ public class ExcelFileHandler {
         Workbook workbook;
         Sheet sheet;
 
-
         java.io.File file = new java.io.File(FILE_PATH);
         if (file.exists()) {
             try (FileInputStream fileInputStream = new FileInputStream(FILE_PATH)) {
@@ -27,58 +27,57 @@ public class ExcelFileHandler {
                 sheet = workbook.getSheetAt(0);
             }
         } else {
-
             workbook = new XSSFWorkbook();
             sheet = workbook.createSheet("Users");
             createHeader(sheet);
         }
 
-
+        // Clear existing rows (if any)
         int rowCount = sheet.getLastRowNum();
         for (int i = rowCount; i > 0; i--) {
             sheet.removeRow(sheet.getRow(i));
         }
 
-
+        // Start adding rows from row 1, as row 0 is reserved for headers
         int rowIndex = 1;
         for (User user : users) {
             Row row = sheet.createRow(rowIndex++);
-            row.createCell(0).setCellValue(user.getName());
-            row.createCell(1).setCellValue(user.getEmail());
-            row.createCell(2).setCellValue(user.getPhone());
-            row.createCell(3).setCellValue(user.getRole());
-
-
-            if (user.getAddress() != null) {
-                row.createCell(4).setCellValue(user.getAddress().getHouseNumber());
-                row.createCell(5).setCellValue(user.getAddress().getCity());
-                row.createCell(6).setCellValue(user.getAddress().getState());
-                row.createCell(7).setCellValue(user.getAddress().getCountry());
-            } else {
-                row.createCell(4).setCellValue("N/A");
-                row.createCell(5).setCellValue("N/A");
-                row.createCell(6).setCellValue("N/A");
-                row.createCell(7).setCellValue("N/A");
-            }
+            writeUserData(row, user);
         }
 
-
-        try (FileOutputStream fileOut = new FileOutputStream(FILE_PATH)) {
-            workbook.write(fileOut);
+        // Write data back to the file
+        try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_PATH)) {
+            workbook.write(fileOutputStream);
         }
 
         workbook.close();
     }
 
+    // Create Excel header with the correct format/order
     private void createHeader(Sheet sheet) {
         Row header = sheet.createRow(0);
-        header.createCell(0).setCellValue("Name");
-        header.createCell(1).setCellValue("Email");
-        header.createCell(2).setCellValue("Phone/Mobile");
-        header.createCell(3).setCellValue("Role");
-        header.createCell(4).setCellValue("House Number");
-        header.createCell(5).setCellValue("City");
-        header.createCell(6).setCellValue("State");
-        header.createCell(7).setCellValue("Country");
+        String[] columns = {
+                "ID", "Name", "Role", "Phone", "Email",
+                "House Number", "City", "State", "Country"
+        };
+        for (int i = 0; i < columns.length; i++) {
+            Cell cell = header.createCell(i);
+            cell.setCellValue(columns[i]);
+        }
+    }
+
+    // Write user data to Excel in the specified order
+    private void writeUserData(Row row, User user) {
+        row.createCell(0).setCellValue(user.getId()); // ID
+        row.createCell(1).setCellValue(user.getName()); // Name
+        row.createCell(2).setCellValue(user.getRole()); // Role
+        row.createCell(3).setCellValue(user.getPhone()); // Phone
+        row.createCell(4).setCellValue(user.getEmail()); // Email
+
+        // Address details
+        row.createCell(5).setCellValue(user.getAddress().getHouseNumber()); // House Number
+        row.createCell(6).setCellValue(user.getAddress().getCity());        // City
+        row.createCell(7).setCellValue(user.getAddress().getState());       // State
+        row.createCell(8).setCellValue(user.getAddress().getCountry());     // Country
     }
 }

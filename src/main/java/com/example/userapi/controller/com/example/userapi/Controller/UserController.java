@@ -1,4 +1,4 @@
-package com.example.userapi.controller;
+package com.example.userapi.Controller;
 
 import com.example.userapi.model.User;
 import com.example.userapi.service.UserService;
@@ -54,14 +54,15 @@ public class UserController {
     @Operation(summary = "Update a user by ID", description = "Updates the details of an existing user")
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(
-            @Parameter(description = "ID of the user to update", example = "1")@PathVariable Long id, @Valid @RequestBody User user) throws Exception {
+            @Parameter(description = "ID of the user to update", example = "1") @PathVariable Long id,
+            @Valid @RequestBody User user) throws Exception {
         return ResponseEntity.ok(userService.updateUser(id, user));
     }
 
     @Operation(summary = "Delete a user by ID", description = "Deletes a user by their unique ID")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(
-            @Parameter(description = "ID of the user to delete", example = "1")@PathVariable Long id) throws IOException {
+            @Parameter(description = "ID of the user to delete", example = "1") @PathVariable Long id) throws IOException {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
