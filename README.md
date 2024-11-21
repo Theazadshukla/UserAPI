@@ -63,7 +63,36 @@ User API
 ├── pom.xml                              # Maven configuration
 └── README.md                            # Project documentation
 ```
-
+flowchart TD
+    A[User Interaction] --> B[Controller]
+    B -->|Validates Input| C[Service Layer]
+    C -->|Processes Business Logic| D[Repository]
+    D -->|Interacts with Database| E[Excel File: userdata.xlsx]
+    
+    subgraph Components
+    B[API Controller]
+    C[User Service]
+    D[User Repository]
+    E[Excel Storage]
+    end
+    
+    subgraph Flow
+    F[User Registration]
+    G[Data Validation]
+    H[Business Logic Processing]
+    I[Data Persistence]
+    end
+    
+    F --> G
+    G --> H
+    H --> I
+    
+    J[Util: ExcelFileHandler] -.-> E
+    
+    style A fill:#4675AA,stroke:#000000,stroke-width:4px
+    style E fill:#4BCE77,stroke:#000000,stroke-width:2px
+    style J fill:#C65941,stroke:#000000,stroke-width:2px
+    
 ## Features
 
 - **User Signup**: Allows users to sign up with details including Name, Email, Phone, Role, and Address.
